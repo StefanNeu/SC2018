@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC2018", "SC2018.csproj", "{A9D09B66-D75E-BDAF-612A-66C187D385F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC2018.Editor", "SC2018.Editor.csproj", "{AD940953-EAED-A158-1811-BDE7F558BF23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9D09B66-D75E-BDAF-612A-66C187D385F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D09B66-D75E-BDAF-612A-66C187D385F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D09B66-D75E-BDAF-612A-66C187D385F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D09B66-D75E-BDAF-612A-66C187D385F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD940953-EAED-A158-1811-BDE7F558BF23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD940953-EAED-A158-1811-BDE7F558BF23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD940953-EAED-A158-1811-BDE7F558BF23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD940953-EAED-A158-1811-BDE7F558BF23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,9 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <UnityWSASolutionName>SC18-ExTrVersion</UnityWSASolutionName>
+        <UnityWSASolutionDir>C:\HoloLensProj\SC2018 - ExTr\UWP\</UnityWSASolutionDir>
+        <UnityProjectDir>C:\HoloLensProj\SC2018 - ExTr\</UnityProjectDir>
+        <UnityWSAPlayerDir>C:\Program Files\Unity2017.4.2f2\Editor\Data\PlaybackEngines\MetroSupport\</UnityWSAPlayerDir>
+        <UnityWSAToolsDir>$(UnityWSASolutionDir)Unity\Tools\</UnityWSAToolsDir>
+    </PropertyGroup>
+</Project>

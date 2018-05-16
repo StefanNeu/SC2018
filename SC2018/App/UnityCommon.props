@@ -1,0 +1,9 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <UnityWSASolutionName>Supcrafted18</UnityWSASolutionName>
+        <UnityWSASolutionDir>C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\</UnityWSASolutionDir>
+        <UnityProjectDir>C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\</UnityProjectDir>
+        <UnityWSAPlayerDir>C:\Softwareentwicklung\Unity_2017.4.2f2\Editor\Data\PlaybackEngines\MetroSupport\</UnityWSAPlayerDir>
+        <UnityWSAToolsDir>$(UnityWSASolutionDir)Unity\Tools\</UnityWSAToolsDir>
+    </PropertyGroup>
+</Project>
