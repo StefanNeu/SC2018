@@ -36,7 +36,6 @@ C:\Users\oculus\HoloLensProj\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\ob
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp.dll
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp.pdb
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp.pri
-C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.csprojAssemblyReference.cache
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.csproj.CoreCompileInputs.cache
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.dll
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.pdb
@@ -51,3 +50,4 @@ C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedPro
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\qualifiers.txt
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\qualifiers.txt.intermediate
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\MultipleQualifiersPerDimensionFound.txt
+C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.csprojResolveAssemblyReference.cache

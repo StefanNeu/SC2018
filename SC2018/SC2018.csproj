@@ -742,8 +742,6 @@
     <Compile Include="Assets\HoloToolkit\UX\Scripts\UsabilityUtilities.cs" />
     <Compile Include="Assets\SampleResources\Scripts\CustomTurnOffBehaviour.cs" />
     <Compile Include="Assets\SampleResources\Scripts\VoiceCommands.cs" />
-    <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />
-    <Compile Include="Assets\Vuforia\Scripts\DefaultTrackableEventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Editor\Vuforia\CylinderTargetTextures\VuforiaMars_Images\authoringinfo.xml" />
@@ -807,11 +805,6 @@
     <None Include="Assets\StreamingAssets\Vuforia\VuforiaMars_Object_OT.xml" />
     <None Include="Assets\StreamingAssets\Vuforia\VuforiaMars_VuMark.xml" />
     <None Include="Assets\StreamingAssets\Vuforia\hololenssample.xml" />
-    <None Include="Assets\Vuforia\Shaders\BrightTexture.shader" />
-    <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />
-    <None Include="Assets\Vuforia\Shaders\DepthMask.shader" />
-    <None Include="Assets\Vuforia\Shaders\Text3D.shader" />
-    <None Include="Assets\Vuforia\Shaders\VertexLitWithZ.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

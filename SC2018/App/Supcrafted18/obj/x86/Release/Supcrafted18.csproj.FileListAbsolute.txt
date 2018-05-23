@@ -545,8 +545,6 @@ C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\bin\x86\Release\UnityEngineDelegates.pdb
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\bin\x86\Release\UnityEngineProxy.pdb
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\obj\x86\Release\Supcrafted18.csproj.CoreCompileInputs.cache
-C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\obj\x86\Release\Supcrafted18.csprojAssemblyReference.cache
-C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\obj\x86\Release\Supcrafted18.csproj.CopyComplete
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\bin\x86\Release\resources.pri
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\bin\x86\Release\AppxManifest.xml
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\bin\x86\Release\Core\AppxManifest.xml
@@ -618,3 +616,4 @@ C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\obj\x86\Release\qualifiers.txt.intermediate
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\obj\x86\Release\MultipleQualifiersPerDimensionFound.txt
 C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\obj\x86\Release\ProjectArchitectures.txt
+C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\obj\x86\Release\Supcrafted18.csprojResolveAssemblyReference.cache

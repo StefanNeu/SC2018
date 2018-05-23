@@ -15783,7 +15783,7 @@
       "projectPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\Assembly-CSharp.csproj",
       "projectJsonPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\project.json",
       "packagesPath": "C:\\Users\\IFPT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\obj\\",
+      "outputPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\obj\\x86\\Debug\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
         "C:\\Users\\IFPT\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -15795,10 +15795,10 @@
       }
     },
     "dependencies": {
-      "Microsoft.ApplicationInsights": "[1.0.0, )",
-      "Microsoft.ApplicationInsights.PersistenceChannel": "[1.0.0, )",
-      "Microsoft.ApplicationInsights.WindowsApps": "[1.0.0, )",
-      "Microsoft.NETCore.UniversalWindowsPlatform": "[5.0.0, )"
+      "Microsoft.ApplicationInsights": "1.0.0",
+      "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
+      "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
+      "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
     },
     "frameworks": {
       "uap10.0.10240": {}
