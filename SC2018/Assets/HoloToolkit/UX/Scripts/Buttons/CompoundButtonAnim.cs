@@ -15,6 +15,8 @@ namespace HoloToolkit.Unity.Buttons
     public class CompoundButtonAnim : MonoBehaviour
     {
 
+        public GameObject ObjToManip;
+
         public string direction;                        //used to differentiate which button is pressed
                    
         static bool singleInstance = false;             //makes sure, we only have one instance of the clone
@@ -62,20 +64,20 @@ namespace HoloToolkit.Unity.Buttons
 
 
 
-                                                                              //directly sets singleInstance to true, so no other clone can be spawned
+            //directly sets singleInstance to true, so no other clone can be spawned
 
-            Vector3 pos_xVec = GameObject.Find("TransCube").transform.position + new Vector3(0.2f, 0, 0);           //takes pos from current cube and adds another vector for new position
+            //Vector3 pos_xVec = GameObject.Find("TransCube").transform.position + new Vector3(0.2f, 0, 0);           //takes pos from current cube and adds another vector for new position
             //GameObject CloneCube = Instantiate(GameObject.Find("TransCube"), pos_xVec, Quaternion.identity);        //instantiates "CloneCube" and slightly different position 
 
-              
-            Destroy(GameObject.Find("TransCube"), 0.0f);                                                            //destroy old cube
+
+            //Destroy(GameObject.Find("TransCube"), 0.0f);                                                            //destroy old cube
             //CloneCube.name = "TransCube";                                                                           //rename CloneCube so it can be used as reference in the next clone process
             //StartCoroutine(Waiting());                                                                        
 
-                    /*WorldAnchorManager.Instance.RemoveAnchor(GameObject.Find("TransCube"));
-                    GameObject.Find("TransCube").transform.Translate(0.1f, 0, 0);
-                    WorldAnchorManager.Instance.AttachAnchor(GameObject.Find("TransCube"));
-                    StartCoroutine(Waiting());*/
+            //WorldAnchorManager.Instance.RemoveAnchor(GameObject.Find("TransCube"));
+            ObjToManip.transform.Translate(0.1f,0,0);
+                    //WorldAnchorManager.Instance.AttachAnchor(GameObject.Find("TransCube"));
+                    StartCoroutine(Waiting());
 
                 
                 
