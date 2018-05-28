@@ -7,7 +7,7 @@
 # Default behavior is to never overwrite files
 Supcrafted18.sln: modified
 GeneratedProjects\UWP\Assembly-CSharp\project.json: modified
-Supcrafted18\App.cs: 095B8AA5FF48F1BE1BA50E4682E8D0B9
+Supcrafted18\App.cs: modified
 Supcrafted18\Package.appxmanifest: modified
 Supcrafted18\project.json: modified
 Supcrafted18\Supcrafted18.csproj: modified

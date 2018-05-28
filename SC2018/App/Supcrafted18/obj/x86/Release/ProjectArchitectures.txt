@@ -1,2 +1,2 @@
-C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
-C:\Users\IFPT\Documents\Supcrafted18\Supcrafted18-master\SC2018\App\Supcrafted18\Supcrafted18.csproj;x86
+C:\Users\stefa\Desktop\IFPT-Work\SC2018\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+C:\Users\stefa\Desktop\IFPT-Work\SC2018\App\Supcrafted18\Supcrafted18.csproj;x86

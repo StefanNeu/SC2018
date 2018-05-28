@@ -19,13 +19,13 @@ namespace HoloToolkit.Unity.Buttons
 
         public string direction;                        //used to differentiate which button is pressed
                    
-        static bool singleInstance = false;             //makes sure, we only have one instance of the clone
+        static bool processActive = false;             //makes sure, we only have one instance of the clone
 
         IEnumerator Waiting()                           //coroutine to stop the user from clicking the button too often and by that spawning too much clones
         {
             
             yield return new WaitForSeconds(1.2f);
-            singleInstance = false;
+            processActive = false;
             
         }
 
@@ -75,99 +75,107 @@ namespace HoloToolkit.Unity.Buttons
             //StartCoroutine(Waiting());                                                                        
 
             //WorldAnchorManager.Instance.RemoveAnchor(GameObject.Find("TransCube"));
-            ObjToManip.transform.Translate(0.1f,0,0);
-                    //WorldAnchorManager.Instance.AttachAnchor(GameObject.Find("TransCube"));
+
+            //WorldAnchorManager.Instance.AttachAnchor(GameObject.Find("TransCube"));
+
+
+            if (processActive == false)
+            {
+                processActive = true;
+                ObjToManip.transform.Translate(0.1f, 0, 0);
+                StartCoroutine(Waiting());
+
+            }
+
+
+
+
+
+
+            /*switch (direction)
+            {
+
+                case "pos x":
+
+                    Vector3 pos_xVec = GameObject.Find("TransCube").transform.position + new Vector3(0.1f, 0, 0);
+                    GameObject CloneCube = Instantiate(GameObject.Find("TransCube"), pos_xVec, Quaternion.identity);
+
+
+                    Destroy(GameObject.Find("TransCube"), 0.0f);
+                    CloneCube.name = "TransCube";
                     StartCoroutine(Waiting());
 
-                
-                
-
-
-
-                /*switch (direction)
-                {
-
-                    case "pos x":
-                        
-                        Vector3 pos_xVec = GameObject.Find("TransCube").transform.position + new Vector3(0.1f, 0, 0);
-                        GameObject CloneCube = Instantiate(GameObject.Find("TransCube"), pos_xVec, Quaternion.identity);
-                        
-
-                        Destroy(GameObject.Find("TransCube"), 0.0f);
-                        CloneCube.name = "TransCube";
-                        StartCoroutine(Waiting());
-
-                        break;
-
-                    case "neg x":
-
-                        break;
-
-                    case "pos y":
-
-                        break;
-
-                    case "neg y":
-
-                        break;
-
-                    case "pos z":
-
-                        break;
-
-                    case "neg z":
-
-                        break;
-
-            }*/
-
-
-
-
-
-                //filter out which button is pressed and move in the right direction
-
-                /*case "pos x":
-                    WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                    TransCube.transform.Translate(0.01f, 0, 0);
-                    WorldAnchorManager.Instance.AttachAnchor(TransCube);
                     break;
 
                 case "neg x":
-                    WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                    TransCube.transform.Translate(-0.01f, 0, 0);
-                    WorldAnchorManager.Instance.AttachAnchor(TransCube);
+
                     break;
 
                 case "pos y":
-                    WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                    TransCube.transform.Translate(0, 0.01f, 0);
-                    WorldAnchorManager.Instance.AttachAnchor(TransCube);
+
                     break;
 
                 case "neg y":
-                    WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                    TransCube.transform.Translate(0, -0.01f, 0);
-                    WorldAnchorManager.Instance.AttachAnchor(TransCube);
+
                     break;
 
-                case "pos z":                 
-                    WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                    TransCube.transform.Translate(0, 0, 0.01f);
-                    WorldAnchorManager.Instance.AttachAnchor(TransCube);
+                case "pos z":
+
                     break;
 
                 case "neg z":
-                    WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                    TransCube.transform.Translate(0, 0, -0.01f);
-                    WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                    break;*/
 
-            
-                
-            
-        
-         
+                    break;
+
+        }*/
+
+
+
+
+
+            //filter out which button is pressed and move in the right direction
+
+            /*case "pos x":
+                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
+                TransCube.transform.Translate(0.01f, 0, 0);
+                WorldAnchorManager.Instance.AttachAnchor(TransCube);
+                break;
+
+            case "neg x":
+                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
+                TransCube.transform.Translate(-0.01f, 0, 0);
+                WorldAnchorManager.Instance.AttachAnchor(TransCube);
+                break;
+
+            case "pos y":
+                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
+                TransCube.transform.Translate(0, 0.01f, 0);
+                WorldAnchorManager.Instance.AttachAnchor(TransCube);
+                break;
+
+            case "neg y":
+                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
+                TransCube.transform.Translate(0, -0.01f, 0);
+                WorldAnchorManager.Instance.AttachAnchor(TransCube);
+                break;
+
+            case "pos z":                 
+                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
+                TransCube.transform.Translate(0, 0, 0.01f);
+                WorldAnchorManager.Instance.AttachAnchor(TransCube);
+                break;
+
+            case "neg z":
+                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
+                TransCube.transform.Translate(0, 0, -0.01f);
+                WorldAnchorManager.Instance.AttachAnchor(TransCube);
+                break;*/
+
+
+
+
+
+
 
             for (int i = 0; i < AnimActions.Length; i++) {
                 if (AnimActions[i].ButtonState == newState) {

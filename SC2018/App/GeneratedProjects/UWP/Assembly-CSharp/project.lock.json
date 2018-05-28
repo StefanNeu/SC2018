@@ -12672,7 +12672,7 @@
       ]
     },
     "Microsoft.NETCore.Runtime.CoreCLR-arm/1.0.0": {
-      "sha512": "hoJfIl981eXwn9Tz8onO/J1xaYApIfp/YrhjSh9rRhml1U5Wj80LBgyp/6n+KI3VlvcAraThhnHnCTp+M3Uh+w==",
+      "sha512": "vUQyaKbHCa7BJAAzdfCP2FfBYOSt0YnDw7VMJLmD1/k68HIJgw1QO7GAfHhqoa39zkkvimC47QBH27wG4C5OGQ==",
       "type": "package",
       "path": "microsoft.netcore.runtime.coreclr-arm/1.0.0",
       "files": [
@@ -15774,19 +15774,19 @@
     "UAP,Version=v10.0.10240": []
   },
   "packageFolders": {
-    "C:\\Users\\IFPT\\.nuget\\packages\\": {}
+    "C:\\Users\\stefa\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\Assembly-CSharp.csproj",
+      "projectUniqueName": "C:\\Users\\stefa\\Desktop\\IFPT-Work\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\Assembly-CSharp.csproj",
       "projectName": "Assembly-CSharp",
-      "projectPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\Assembly-CSharp.csproj",
-      "projectJsonPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\project.json",
-      "packagesPath": "C:\\Users\\IFPT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\obj\\x86\\Debug\\",
+      "projectPath": "C:\\Users\\stefa\\Desktop\\IFPT-Work\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\Assembly-CSharp.csproj",
+      "projectJsonPath": "C:\\Users\\stefa\\Desktop\\IFPT-Work\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\project.json",
+      "packagesPath": "C:\\Users\\stefa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\stefa\\Desktop\\IFPT-Work\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
-        "C:\\Users\\IFPT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\stefa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "sources": {
@@ -15795,10 +15795,10 @@
       }
     },
     "dependencies": {
-      "Microsoft.ApplicationInsights": "1.0.0",
-      "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
-      "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
-      "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+      "Microsoft.ApplicationInsights": "[1.0.0, )",
+      "Microsoft.ApplicationInsights.PersistenceChannel": "[1.0.0, )",
+      "Microsoft.ApplicationInsights.WindowsApps": "[1.0.0, )",
+      "Microsoft.NETCore.UniversalWindowsPlatform": "[5.0.0, )"
     },
     "frameworks": {
       "uap10.0.10240": {}
