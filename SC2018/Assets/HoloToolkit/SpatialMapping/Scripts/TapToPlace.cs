@@ -172,7 +172,6 @@ namespace HoloToolkit.Unity.SpatialMapping
         {
             if (WorldAnchorManager.Instance != null)
             {
-                Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 // Add world anchor when object placement is done.
                 WorldAnchorManager.Instance.AttachAnchor(PlaceParentOnTap ? ParentGameObjectToPlace : gameObject);
             }

@@ -15,21 +15,22 @@ namespace HoloToolkit.Unity.Buttons
     public class CompoundButtonAnim : MonoBehaviour
     {
 
-        public GameObject ObjToManip;
+        public GameObject ObjToManip;                   //object that gets moved
+        public GameObject MoveHandle;                   //used to deactivate MoveUI and therefore activate RotateUI (otherwise both UIs overlap)
+        public GameObject RotateHandle;
+        
 
-        public string direction;                        //used to differentiate which button is pressed
+        public string button;                        //used to differentiate which button is pressed
                    
-        static bool processActive = false;             //makes sure, we only have one instance of the clone
+        static bool processActive = false;              //makes sure, we cant press button too often
 
-        IEnumerator Waiting()                           //coroutine to stop the user from clicking the button too often and by that spawning too much clones
-        {
+        IEnumerator Waiting()                           //coroutine to stop the user from clicking the button too often and movingthe button too fast 
+        {                                               
             
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(1.2f);      //for faster movement, decrease time
             processActive = false;
             
         }
-
-
 
         [DropDownComponent]
         public Animator TargetAnimator;
@@ -44,6 +45,23 @@ namespace HoloToolkit.Unity.Buttons
             GetComponent<Button>().StateChange += StateChange;
             if (TargetAnimator == null) {
                 TargetAnimator = GetComponent<Animator>();
+            }
+
+            GameObject MovHandleButtons = MoveHandle.transform.GetChild(0).gameObject;
+            GameObject RotaHandleButtons = RotateHandle.transform.GetChild(0).gameObject;
+
+            RotaHandleButtons.SetActive(false);
+
+        }
+
+        void MoveObj(float x, float y, float z, ButtonStateEnum newState)
+        {
+            if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+            {
+                processActive = true;
+                ObjToManip.transform.Translate(x,y,z);
+                StartCoroutine(Waiting());
+
             }
         }
 
@@ -62,119 +80,68 @@ namespace HoloToolkit.Unity.Buttons
             if (!gameObject.activeSelf)
                 return;
 
+            GameObject MovHandleButtons = MoveHandle.transform.GetChild(0).gameObject;
+            GameObject RotaHandleButtons = RotateHandle.transform.GetChild(0).gameObject;
 
 
-            //directly sets singleInstance to true, so no other clone can be spawned
-
-            //Vector3 pos_xVec = GameObject.Find("TransCube").transform.position + new Vector3(0.2f, 0, 0);           //takes pos from current cube and adds another vector for new position
-            //GameObject CloneCube = Instantiate(GameObject.Find("TransCube"), pos_xVec, Quaternion.identity);        //instantiates "CloneCube" and slightly different position 
-
-
-            //Destroy(GameObject.Find("TransCube"), 0.0f);                                                            //destroy old cube
-            //CloneCube.name = "TransCube";                                                                           //rename CloneCube so it can be used as reference in the next clone process
-            //StartCoroutine(Waiting());                                                                        
-
-            //WorldAnchorManager.Instance.RemoveAnchor(GameObject.Find("TransCube"));
-
-            //WorldAnchorManager.Instance.AttachAnchor(GameObject.Find("TransCube"));
-
-
-            if (processActive == false)
+            switch (button)
             {
-                processActive = true;
-                ObjToManip.transform.Translate(0.1f, 0, 0);
-                StartCoroutine(Waiting());
+                case "mov pos x":                                   //moves ObjToManip depending on case (direction)
+
+                    MoveObj(0.1f, 0, 0, newState);
+                    break;
+
+                case "mov neg x":
+
+                    MoveObj(-0.1f, 0, 0, newState);
+                    break;
+
+                case "mov pos y":
+
+                    MoveObj(0, 0.1f, 0, newState);
+                    break;
+
+                case "mov neg y":
+
+                    MoveObj(0, -0.1f, 0, newState);
+                    break;
+
+                case "mov pos z":
+
+                    MoveObj(0, 0, 0.1f, newState);
+                    break;
+
+                case "mov neg z":
+
+                    MoveObj(0, 0, -0.1f, newState);
+                    break;
+                    
+                case "move":
+
+                    if (newState == ButtonStateEnum.Pressed)
+                    {
+                        if (RotaHandleButtons.activeSelf == true)
+                            RotaHandleButtons.SetActive(false);
+
+                        if (MovHandleButtons.activeSelf == false)
+                            MovHandleButtons.SetActive(true);
+                    }
+                    break;
+
+                case "rotate":
+
+                    if (newState == ButtonStateEnum.Pressed)
+                    {
+                        if (RotaHandleButtons.activeSelf == false)
+                            RotaHandleButtons.SetActive(true);
+                   
+                        if (MovHandleButtons.activeSelf == true)
+                            MovHandleButtons.SetActive(false);
+
+                    }
+                    break;
 
             }
-
-
-
-
-
-
-            /*switch (direction)
-            {
-
-                case "pos x":
-
-                    Vector3 pos_xVec = GameObject.Find("TransCube").transform.position + new Vector3(0.1f, 0, 0);
-                    GameObject CloneCube = Instantiate(GameObject.Find("TransCube"), pos_xVec, Quaternion.identity);
-
-
-                    Destroy(GameObject.Find("TransCube"), 0.0f);
-                    CloneCube.name = "TransCube";
-                    StartCoroutine(Waiting());
-
-                    break;
-
-                case "neg x":
-
-                    break;
-
-                case "pos y":
-
-                    break;
-
-                case "neg y":
-
-                    break;
-
-                case "pos z":
-
-                    break;
-
-                case "neg z":
-
-                    break;
-
-        }*/
-
-
-
-
-
-            //filter out which button is pressed and move in the right direction
-
-            /*case "pos x":
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(0.01f, 0, 0);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;
-
-            case "neg x":
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(-0.01f, 0, 0);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;
-
-            case "pos y":
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(0, 0.01f, 0);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;
-
-            case "neg y":
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(0, -0.01f, 0);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;
-
-            case "pos z":                 
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(0, 0, 0.01f);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;
-
-            case "neg z":
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(0, 0, -0.01f);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;*/
-
-
-
-
-
 
 
             for (int i = 0; i < AnimActions.Length; i++) {
