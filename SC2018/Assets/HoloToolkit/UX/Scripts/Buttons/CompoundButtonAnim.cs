@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using HoloToolkit.Unity;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace HoloToolkit.Unity.Buttons
 {
@@ -18,7 +19,9 @@ namespace HoloToolkit.Unity.Buttons
         public GameObject ObjToManip;                   //object that gets moved
         public GameObject MoveHandle;                   //used to deactivate MoveUI and therefore activate RotateUI (otherwise both UIs overlap)
         public GameObject RotateHandle;
-        
+
+        float move_factor = 0.01f;                      //0.01m = 1cm
+        float rotate_factor = 5.0f;                    //10 degrees
 
         public string button;                        //used to differentiate which button is pressed
                    
@@ -27,7 +30,7 @@ namespace HoloToolkit.Unity.Buttons
         IEnumerator Waiting()                           //coroutine to stop the user from clicking the button too often and movingthe button too fast 
         {                                               
             
-            yield return new WaitForSeconds(1.2f);      //for faster movement, decrease time
+            yield return new WaitForSeconds(0.8f);      //for faster movement, decrease time
             processActive = false;
             
         }
@@ -47,10 +50,9 @@ namespace HoloToolkit.Unity.Buttons
                 TargetAnimator = GetComponent<Animator>();
             }
 
-            GameObject MovHandleButtons = MoveHandle.transform.GetChild(0).gameObject;
             GameObject RotaHandleButtons = RotateHandle.transform.GetChild(0).gameObject;
 
-            RotaHandleButtons.SetActive(false);
+            RotaHandleButtons.SetActive(false);                                     //get buttons of rotatehandle and deactivate them at start of application
 
         }
 
@@ -63,7 +65,19 @@ namespace HoloToolkit.Unity.Buttons
                 StartCoroutine(Waiting());
 
             }
-        }
+        }                           //method to move object
+
+        void RotateObj(float x, float y, float z, ButtonStateEnum newState)
+        {
+            if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+            {
+              
+                processActive = true;
+                ObjToManip.transform.Rotate(x, y, z);
+                StartCoroutine(Waiting());
+
+            }
+        }                         //method to rotate object in euler-angles
 
         /// <summary>
         /// State change
@@ -80,43 +94,16 @@ namespace HoloToolkit.Unity.Buttons
             if (!gameObject.activeSelf)
                 return;
 
-            GameObject MovHandleButtons = MoveHandle.transform.GetChild(0).gameObject;
+            GameObject MovHandleButtons = MoveHandle.transform.GetChild(0).gameObject;          //get the childs (the buttons) of the handles, too deactivate them
             GameObject RotaHandleButtons = RotateHandle.transform.GetChild(0).gameObject;
 
 
             switch (button)
             {
-                case "mov pos x":                                   //moves ObjToManip depending on case (direction)
 
-                    MoveObj(0.1f, 0, 0, newState);
-                    break;
+                //---------------------------- CASES FOR UI-CHANGE ------------------------------------
 
-                case "mov neg x":
-
-                    MoveObj(-0.1f, 0, 0, newState);
-                    break;
-
-                case "mov pos y":
-
-                    MoveObj(0, 0.1f, 0, newState);
-                    break;
-
-                case "mov neg y":
-
-                    MoveObj(0, -0.1f, 0, newState);
-                    break;
-
-                case "mov pos z":
-
-                    MoveObj(0, 0, 0.1f, newState);
-                    break;
-
-                case "mov neg z":
-
-                    MoveObj(0, 0, -0.1f, newState);
-                    break;
-                    
-                case "move":
+                case "move":                                                //enables move-UI, disables rotate-UI
 
                     if (newState == ButtonStateEnum.Pressed)
                     {
@@ -128,18 +115,84 @@ namespace HoloToolkit.Unity.Buttons
                     }
                     break;
 
-                case "rotate":
+                case "rotate":                                              //enables rotate-UI, disables move-UI
 
                     if (newState == ButtonStateEnum.Pressed)
                     {
                         if (RotaHandleButtons.activeSelf == false)
                             RotaHandleButtons.SetActive(true);
-                   
+
                         if (MovHandleButtons.activeSelf == true)
                             MovHandleButtons.SetActive(false);
 
                     }
                     break;
+
+
+                //------------------------- CASES FOR MOVEMENT --------------------------------------
+                case "mov pos x":                                   //moves ObjToManip depending on case (direction)
+
+                    MoveObj(move_factor, 0, 0, newState);
+                    break;
+
+                case "mov neg x":
+
+                    MoveObj(-move_factor, 0, 0, newState);
+                    break;
+
+                case "mov pos y":
+
+                    MoveObj(0, move_factor, 0, newState);
+                    break;
+
+                case "mov neg y":
+
+                    MoveObj(0, -move_factor, 0, newState);
+                    break;
+
+                case "mov pos z":
+
+                    MoveObj(0, 0, move_factor, newState);
+                    break;
+
+                case "mov neg z":
+
+                    MoveObj(0, 0, -move_factor, newState);
+                    break;
+
+                //------------------------------- CASES FOR ROTATION -----------------------------------
+                case "rot pos x":
+
+                    RotateObj(rotate_factor, 0, 0, newState);
+                    break;
+
+                case "rot neg x":
+
+                    RotateObj(-rotate_factor, 0, 0, newState);
+                    break;
+
+                case "rot pos y":
+
+                    RotateObj(0, rotate_factor, 0, newState);
+                    break;
+
+                case "rot neg y":
+
+                    RotateObj(0, -rotate_factor, 0, newState);
+                    break;
+
+                case "rot pos z":
+
+                    RotateObj(0, 0, rotate_factor, newState);
+                    break;
+
+                case "rot neg z":
+
+                    RotateObj(0, 0, -rotate_factor, newState);
+                    //SceneManager.LoadScene("0-TestScene");
+                    break;
+
+
 
             }
 

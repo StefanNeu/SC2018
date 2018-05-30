@@ -18,6 +18,9 @@ namespace HoloToolkit.Unity.SpatialMapping
     [RequireComponent(typeof(Interpolator))]
     public class TapToPlace : MonoBehaviour, IInputClickHandler
     {
+
+        public bool UI_Handle;                      //needed to change behaviour in TapToPlace.. the UI_Handle shouldnt be projected on the SpatialMesh but appear directly in front of the user
+
         [Tooltip("Distance from camera to keep the object while placing it.")]
         public float DefaultGazeDistance = 2.0f;
 
@@ -122,6 +125,10 @@ namespace HoloToolkit.Unity.SpatialMapping
                 placementPosition = ParentGameObjectToPlace.transform.position + (placementPosition - gameObject.transform.position);
             }
 
+            if(UI_Handle == true)
+            {
+                placementPosition = GetGazePlacementPosition(cameraTransform.position, cameraTransform.forward, DefaultGazeDistance);
+            }
             // update the placement to match the user's gaze.
             interpolator.SetTargetPosition(placementPosition);
 
@@ -242,10 +249,10 @@ namespace HoloToolkit.Unity.SpatialMapping
         /// <returns>Placement position in front of the user</returns>
         private static Vector3 GetGazePlacementPosition(Vector3 headPosition, Vector3 gazeDirection, float defaultGazeDistance)
         {
-            if (GazeManager.Instance.HitObject != null)
+            /*if (GazeManager.Instance.HitObject != null)
             {
                 return GazeManager.Instance.HitPosition;
-            }
+            }*/
             return headPosition + gazeDirection * defaultGazeDistance;
         }
     }
