@@ -15,13 +15,16 @@ namespace HoloToolkit.Unity.Buttons
     [RequireComponent(typeof(CompoundButton))]
     public class CompoundButtonAnim : MonoBehaviour
     {
-
+        public GameObject ButtonFamily;
         public GameObject ObjToManip;                   //object that gets moved
         public GameObject MoveHandle;                   //used to deactivate MoveUI and therefore activate RotateUI (otherwise both UIs overlap)
         public GameObject RotateHandle;
 
-        float move_factor = 0.01f;                      //0.01m = 1cm
-        float rotate_factor = 5.0f;                    //10 degrees
+        
+
+        float move_factor = 0.01f;                     //0.01m = 1cm
+        float rotate_factor = 5.0f;                    //5 degrees
+        float ui_scale_factor = 1.1f;                 //10%
 
         public string button;                        //used to differentiate which button is pressed
                    
@@ -54,7 +57,31 @@ namespace HoloToolkit.Unity.Buttons
 
             RotaHandleButtons.SetActive(false);                                     //get buttons of rotatehandle and deactivate them at start of application
 
+            if (ObjToManip.transform.childCount >= 2)
+                ObjToManip.transform.GetChild(1).gameObject.SetActive(false);           //deactivate mesh of RotateCube when app starts
+
+            if (name == "Pos_UI_Scale" || name == "Neg_UI_Scale")                   //ugly hotfix since backplates of UI_Scale buttons disappeared at app_start
+                if (transform.GetChild(0).gameObject.activeSelf == false)
+                    transform.GetChild(0).gameObject.SetActive(true);
         }
+
+
+        //----------------- METHODS USED FOR MOVING/ROTATING/SCALING-----------------------------
+        void Scale_UI(float scale_factor, ButtonStateEnum newState)
+        {
+
+            if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+            {
+                processActive = true;
+
+                Debug.Log(GameObject.Find("MainCursor").transform.localScale);              //cursor gets scaled with the ui
+                GameObject.Find("MainCursor").transform.localScale *= scale_factor;
+
+                ButtonFamily.transform.localScale *= scale_factor;
+                StartCoroutine(Waiting());
+
+            }
+        }                           //method to scale the UI
 
         void MoveObj(float x, float y, float z, ButtonStateEnum newState)
         {
@@ -78,6 +105,8 @@ namespace HoloToolkit.Unity.Buttons
 
             }
         }                         //method to rotate object in euler-angles
+        //---------------------------------------------------------------------------------------
+        
 
         /// <summary>
         /// State change
@@ -97,6 +126,17 @@ namespace HoloToolkit.Unity.Buttons
             GameObject MovHandleButtons = MoveHandle.transform.GetChild(0).gameObject;          //get the childs (the buttons) of the handles, too deactivate them
             GameObject RotaHandleButtons = RotateHandle.transform.GetChild(0).gameObject;
 
+            
+            GameObject AxisCubeMesh = ObjToManip.transform.GetChild(0).gameObject;
+
+        
+            GameObject RotaCubeMesh = ObjToManip.transform.GetChild(1).gameObject;
+         
+
+            
+            
+
+
 
             switch (button)
             {
@@ -112,6 +152,14 @@ namespace HoloToolkit.Unity.Buttons
 
                         if (MovHandleButtons.activeSelf == false)
                             MovHandleButtons.SetActive(true);
+
+                        if (RotaCubeMesh.activeSelf == true)                //since we change to the move-ui, the rotacubemesh (in form of child object) should be deactiv.
+                            RotaCubeMesh.SetActive(false);
+
+                        if (AxisCubeMesh.activeSelf == false)               //and axiscubemesh gets activated
+                            AxisCubeMesh.SetActive(true);
+
+
                     }
                     break;
 
@@ -125,37 +173,53 @@ namespace HoloToolkit.Unity.Buttons
                         if (MovHandleButtons.activeSelf == true)
                             MovHandleButtons.SetActive(false);
 
+                        if (RotaCubeMesh.activeSelf == false)                //see above case "move"
+                            RotaCubeMesh.SetActive(true);
+
+                        if (AxisCubeMesh.activeSelf == true)              
+                            AxisCubeMesh.SetActive(false);
+
                     }
+                    break;
+
+                case "pos scale":                                               //scales UI in all positive in all directions
+
+                    Scale_UI(ui_scale_factor, newState);
+                    break;
+
+                case "neg scale":
+
+                    Scale_UI(2.0f - ui_scale_factor, newState);
                     break;
 
 
                 //------------------------- CASES FOR MOVEMENT --------------------------------------
-                case "mov pos x":                                   //moves ObjToManip depending on case (direction)
+                case "mov pos z":                                   //moves ObjToManip depending on case (direction)
 
                     MoveObj(move_factor, 0, 0, newState);
                     break;
 
-                case "mov neg x":
+                case "mov neg z":
 
                     MoveObj(-move_factor, 0, 0, newState);
                     break;
 
                 case "mov pos y":
 
-                    MoveObj(0, move_factor, 0, newState);
+                    MoveObj(0, -move_factor, 0, newState);
                     break;
 
                 case "mov neg y":
 
-                    MoveObj(0, -move_factor, 0, newState);
+                    MoveObj(0, move_factor, 0, newState);
                     break;
 
-                case "mov pos z":
+                case "mov pos x":
 
                     MoveObj(0, 0, move_factor, newState);
                     break;
 
-                case "mov neg z":
+                case "mov neg x":
 
                     MoveObj(0, 0, -move_factor, newState);
                     break;
@@ -163,22 +227,22 @@ namespace HoloToolkit.Unity.Buttons
                 //------------------------------- CASES FOR ROTATION -----------------------------------
                 case "rot pos x":
 
-                    RotateObj(rotate_factor, 0, 0, newState);
+                    RotateObj(-rotate_factor, 0, 0, newState);
                     break;
 
                 case "rot neg x":
 
-                    RotateObj(-rotate_factor, 0, 0, newState);
+                    RotateObj(rotate_factor, 0, 0, newState);
                     break;
 
                 case "rot pos y":
 
-                    RotateObj(0, rotate_factor, 0, newState);
+                    RotateObj(0, -rotate_factor, 0, newState);
                     break;
 
                 case "rot neg y":
 
-                    RotateObj(0, -rotate_factor, 0, newState);
+                    RotateObj(0, rotate_factor, 0, newState);
                     break;
 
                 case "rot pos z":
