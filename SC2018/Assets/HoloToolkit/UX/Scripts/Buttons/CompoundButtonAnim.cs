@@ -125,17 +125,10 @@ namespace HoloToolkit.Unity.Buttons
             GameObject MovHandleButtons = MoveHandle.transform.GetChild(0).gameObject;          //get the childs (the buttons) of the handles, too deactivate them
             GameObject RotaHandleButtons = RotateHandle.transform.GetChild(0).gameObject;
 
-            
-            GameObject AxisCubeMesh = ObjToManip.transform.GetChild(0).gameObject;
-
-        
             GameObject RotaCubeMesh = ObjToManip.transform.GetChild(1).gameObject;
-         
-
-            
-            
-
-
+            GameObject AxisCubeMesh = ObjToManip.transform.GetChild(0).gameObject;
+           
+   
 
             switch (button)
             {
@@ -167,8 +160,11 @@ namespace HoloToolkit.Unity.Buttons
                     if (newState == ButtonStateEnum.Pressed)
                     {
                         if (RotaHandleButtons.activeSelf == false)
+                        {
+                            RotaHandleButtons.SetActive(true);                  //two times because unity doesn't show it at the first (absolutely no clue why)
                             RotaHandleButtons.SetActive(true);
-
+                        }
+                        
                         if (MovHandleButtons.activeSelf == true)
                             MovHandleButtons.SetActive(false);
 
@@ -272,7 +268,7 @@ namespace HoloToolkit.Unity.Buttons
                                 TargetAnimator.SetFloat(AnimActions[i].ParamName, AnimActions[i].FloatValue);
                                 break;
 
-                            case AnimatorControllerParameterType.Int:
+                            case AnimatorControllerParameterType.Int:                              
                                 TargetAnimator.SetInteger(AnimActions[i].ParamName, AnimActions[i].IntValue);
                                 break;
 
