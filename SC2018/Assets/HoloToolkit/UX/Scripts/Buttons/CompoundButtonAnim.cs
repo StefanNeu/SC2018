@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using HoloToolkit.Unity;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace HoloToolkit.Unity.Buttons
 {
@@ -14,22 +15,27 @@ namespace HoloToolkit.Unity.Buttons
     [RequireComponent(typeof(CompoundButton))]
     public class CompoundButtonAnim : MonoBehaviour
     {
+        public GameObject ButtonFamily;
+        public GameObject ObjToManip;                   //object that gets moved
+        public GameObject MoveHandle;                   //used to deactivate MoveUI and therefore activate RotateUI (otherwise both UIs overlap)
+        public GameObject RotateHandle;
 
-        public GameObject ObjToManip;
+        
+        float move_factor = 0.001f;                     //0.001m = 1mm
+        float rotate_factor = 3.0f;                    //3 degrees
+        float ui_scale_factor = 1.1f;                 //10%
 
-        public string direction;                        //used to differentiate which button is pressed
+        public string button;                        //used to differentiate which button is pressed
                    
-        static bool processActive = false;             //makes sure, we only have one instance of the clone
+        static bool processActive = false;              //makes sure, we cant press button too often
 
-        IEnumerator Waiting()                           //coroutine to stop the user from clicking the button too often and by that spawning too much clones
-        {
+        IEnumerator Waiting()                           //coroutine to stop the user from clicking the button too often and movingthe button too fast 
+        {                                               
             
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(0.8f);      //for faster movement, decrease time
             processActive = false;
             
         }
-
-
 
         [DropDownComponent]
         public Animator TargetAnimator;
@@ -45,7 +51,61 @@ namespace HoloToolkit.Unity.Buttons
             if (TargetAnimator == null) {
                 TargetAnimator = GetComponent<Animator>();
             }
+
+            GameObject RotaHandleButtons = RotateHandle.transform.GetChild(0).gameObject;
+
+            RotaHandleButtons.SetActive(false);                                     //get buttons of rotatehandle and deactivate them at start of application
+
+            if (ObjToManip.transform.childCount >= 2)
+                ObjToManip.transform.GetChild(1).gameObject.SetActive(false);           //deactivate mesh of RotateCube when app starts
+
+            if (name == "Pos_UI_Scale" || name == "Neg_UI_Scale")                   //ugly hotfix since backplates of UI_Scale buttons disappeared at app_start
+                if (transform.GetChild(0).gameObject.activeSelf == false)
+                    transform.GetChild(0).gameObject.SetActive(true);
         }
+
+
+        //----------------- METHODS USED FOR MOVING/ROTATING/SCALING-----------------------------
+        void Scale_UI(float scale_factor, ButtonStateEnum newState)
+        {
+
+            if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+            {
+                processActive = true;
+
+                Debug.Log(GameObject.Find("MainCursor").transform.localScale);              //cursor gets scaled with the ui
+                GameObject.Find("MainCursor").transform.localScale *= scale_factor;
+
+                ButtonFamily.transform.localScale *= scale_factor;
+                StartCoroutine(Waiting());
+
+            }
+        }                           //method to scale the UI
+
+        void MoveObj(float x, float y, float z, ButtonStateEnum newState)
+        {
+            if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+            {
+                processActive = true;
+                ObjToManip.transform.Translate(x,y,z);
+                StartCoroutine(Waiting());
+
+            }
+        }                           //method to move object
+
+        void RotateObj(float x, float y, float z, ButtonStateEnum newState)
+        {
+            if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+            {
+              
+                processActive = true;
+                ObjToManip.transform.Rotate(x, y, z);
+                StartCoroutine(Waiting());
+
+            }
+        }                         //method to rotate object in euler-angles
+        //---------------------------------------------------------------------------------------
+        
 
         /// <summary>
         /// State change
@@ -62,119 +122,142 @@ namespace HoloToolkit.Unity.Buttons
             if (!gameObject.activeSelf)
                 return;
 
+            GameObject MovHandleButtons = MoveHandle.transform.GetChild(0).gameObject;          //get the childs (the buttons) of the handles, too deactivate them
+            GameObject RotaHandleButtons = RotateHandle.transform.GetChild(0).gameObject;
+
+            
+            GameObject AxisCubeMesh = ObjToManip.transform.GetChild(0).gameObject;
+
+        
+            GameObject RotaCubeMesh = ObjToManip.transform.GetChild(1).gameObject;
+         
+
+            
+            
 
 
-            //directly sets singleInstance to true, so no other clone can be spawned
 
-            //Vector3 pos_xVec = GameObject.Find("TransCube").transform.position + new Vector3(0.2f, 0, 0);           //takes pos from current cube and adds another vector for new position
-            //GameObject CloneCube = Instantiate(GameObject.Find("TransCube"), pos_xVec, Quaternion.identity);        //instantiates "CloneCube" and slightly different position 
-
-
-            //Destroy(GameObject.Find("TransCube"), 0.0f);                                                            //destroy old cube
-            //CloneCube.name = "TransCube";                                                                           //rename CloneCube so it can be used as reference in the next clone process
-            //StartCoroutine(Waiting());                                                                        
-
-            //WorldAnchorManager.Instance.RemoveAnchor(GameObject.Find("TransCube"));
-
-            //WorldAnchorManager.Instance.AttachAnchor(GameObject.Find("TransCube"));
-
-
-            if (processActive == false)
+            switch (button)
             {
-                processActive = true;
-                ObjToManip.transform.Translate(0.1f, 0, 0);
-                StartCoroutine(Waiting());
+
+                //---------------------------- CASES FOR UI-CHANGE ------------------------------------
+
+                case "move":                                                //enables move-UI, disables rotate-UI
+
+                    if (newState == ButtonStateEnum.Pressed)
+                    {
+                        if (RotaHandleButtons.activeSelf == true)
+                            RotaHandleButtons.SetActive(false);
+
+                        if (MovHandleButtons.activeSelf == false)
+                            MovHandleButtons.SetActive(true);
+
+                        if (RotaCubeMesh.activeSelf == true)                //since we change to the move-ui, the rotacubemesh (in form of child object) should be deactiv.
+                            RotaCubeMesh.SetActive(false);
+
+                        if (AxisCubeMesh.activeSelf == false)               //and axiscubemesh gets activated
+                            AxisCubeMesh.SetActive(true);
+
+
+                    }
+                    break;
+
+                case "rotate":                                              //enables rotate-UI, disables move-UI
+
+                    if (newState == ButtonStateEnum.Pressed)
+                    {
+                        if (RotaHandleButtons.activeSelf == false)
+                            RotaHandleButtons.SetActive(true);
+
+                        if (MovHandleButtons.activeSelf == true)
+                            MovHandleButtons.SetActive(false);
+
+                        if (RotaCubeMesh.activeSelf == false)                //see above case "move"
+                            RotaCubeMesh.SetActive(true);
+
+                        if (AxisCubeMesh.activeSelf == true)              
+                            AxisCubeMesh.SetActive(false);
+
+                    }
+                    break;
+
+                case "pos scale":                                               //scales UI in all positive in all directions
+
+                    Scale_UI(ui_scale_factor, newState);
+                    break;
+
+                case "neg scale":
+
+                    Scale_UI(2.0f - ui_scale_factor, newState);
+                    break;
+
+
+                //------------------------- CASES FOR MOVEMENT --------------------------------------
+                case "mov pos z":                                   //moves ObjToManip depending on case (direction)
+
+                    MoveObj(move_factor, 0, 0, newState);
+                    break;
+
+                case "mov neg z":
+
+                    MoveObj(-move_factor, 0, 0, newState);
+                    break;
+
+                case "mov pos y":
+
+                    MoveObj(0, -move_factor, 0, newState);
+                    break;
+
+                case "mov neg y":
+
+                    MoveObj(0, move_factor, 0, newState);
+                    break;
+
+                case "mov pos x":
+
+                    MoveObj(0, 0, move_factor, newState);
+                    break;
+
+                case "mov neg x":
+
+                    MoveObj(0, 0, -move_factor, newState);
+                    break;
+
+                //------------------------------- CASES FOR ROTATION -----------------------------------
+                case "rot pos x":
+
+                    RotateObj(-rotate_factor, 0, 0, newState);
+                    break;
+
+                case "rot neg x":
+
+                    RotateObj(rotate_factor, 0, 0, newState);
+                    break;
+
+                case "rot pos y":
+
+                    RotateObj(0, -rotate_factor, 0, newState);
+                    break;
+
+                case "rot neg y":
+
+                    RotateObj(0, rotate_factor, 0, newState);
+                    break;
+
+                case "rot pos z":
+
+                    RotateObj(0, 0, rotate_factor, newState);
+                    break;
+
+                case "rot neg z":
+
+                    RotateObj(0, 0, -rotate_factor, newState);
+                    //SceneManager.LoadScene("0-TestScene");
+                    break;
+
+
 
             }
-
-
-
-
-
-
-            /*switch (direction)
-            {
-
-                case "pos x":
-
-                    Vector3 pos_xVec = GameObject.Find("TransCube").transform.position + new Vector3(0.1f, 0, 0);
-                    GameObject CloneCube = Instantiate(GameObject.Find("TransCube"), pos_xVec, Quaternion.identity);
-
-
-                    Destroy(GameObject.Find("TransCube"), 0.0f);
-                    CloneCube.name = "TransCube";
-                    StartCoroutine(Waiting());
-
-                    break;
-
-                case "neg x":
-
-                    break;
-
-                case "pos y":
-
-                    break;
-
-                case "neg y":
-
-                    break;
-
-                case "pos z":
-
-                    break;
-
-                case "neg z":
-
-                    break;
-
-        }*/
-
-
-
-
-
-            //filter out which button is pressed and move in the right direction
-
-            /*case "pos x":
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(0.01f, 0, 0);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;
-
-            case "neg x":
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(-0.01f, 0, 0);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;
-
-            case "pos y":
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(0, 0.01f, 0);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;
-
-            case "neg y":
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(0, -0.01f, 0);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;
-
-            case "pos z":                 
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(0, 0, 0.01f);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;
-
-            case "neg z":
-                WorldAnchorManager.Instance.RemoveAnchor(TransCube);
-                TransCube.transform.Translate(0, 0, -0.01f);
-                WorldAnchorManager.Instance.AttachAnchor(TransCube);
-                break;*/
-
-
-
-
-
 
 
             for (int i = 0; i < AnimActions.Length; i++) {
