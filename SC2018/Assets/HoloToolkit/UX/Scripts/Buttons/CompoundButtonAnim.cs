@@ -21,9 +21,8 @@ namespace HoloToolkit.Unity.Buttons
         public GameObject RotateHandle;
 
         
-
-        float move_factor = 0.01f;                     //0.01m = 1cm
-        float rotate_factor = 5.0f;                    //5 degrees
+        float move_factor = 0.001f;                     //0.001m = 1mm
+        float rotate_factor = 3.0f;                    //3 degrees
         float ui_scale_factor = 1.1f;                 //10%
 
         public string button;                        //used to differentiate which button is pressed
