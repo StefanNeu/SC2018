@@ -15849,19 +15849,19 @@
     "UAP,Version=v10.0.10240": []
   },
   "packageFolders": {
-    "C:\\Users\\stefa\\.nuget\\packages\\": {}
+    "C:\\Users\\IFPT\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\stefa\\Desktop\\IFPT-Work\\SC2018\\App\\Supcrafted18\\Supcrafted18.csproj",
+      "projectUniqueName": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\Supcrafted18\\Supcrafted18.csproj",
       "projectName": "Supcrafted18",
-      "projectPath": "C:\\Users\\stefa\\Desktop\\IFPT-Work\\SC2018\\App\\Supcrafted18\\Supcrafted18.csproj",
-      "projectJsonPath": "C:\\Users\\stefa\\Desktop\\IFPT-Work\\SC2018\\App\\Supcrafted18\\project.json",
-      "packagesPath": "C:\\Users\\stefa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stefa\\Desktop\\IFPT-Work\\SC2018\\App\\Supcrafted18\\obj\\",
+      "projectPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\Supcrafted18\\Supcrafted18.csproj",
+      "projectJsonPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\Supcrafted18\\project.json",
+      "packagesPath": "C:\\Users\\IFPT\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\Supcrafted18\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
-        "C:\\Users\\stefa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\IFPT\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "sources": {
@@ -15871,18 +15871,18 @@
       "frameworks": {
         "uap10.0.10240": {
           "projectReferences": {
-            "C:\\Users\\stefa\\Desktop\\IFPT-Work\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\Assembly-CSharp.csproj": {
-              "projectPath": "C:\\Users\\stefa\\Desktop\\IFPT-Work\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\Assembly-CSharp.csproj"
+            "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\Assembly-CSharp.csproj": {
+              "projectPath": "C:\\Users\\IFPT\\Documents\\Supcrafted18\\Supcrafted18-master\\SC2018\\App\\GeneratedProjects\\UWP\\Assembly-CSharp\\Assembly-CSharp.csproj"
             }
           }
         }
       }
     },
     "dependencies": {
-      "Microsoft.ApplicationInsights": "[1.0.0, )",
-      "Microsoft.ApplicationInsights.PersistenceChannel": "[1.0.0, )",
-      "Microsoft.ApplicationInsights.WindowsApps": "[1.0.0, )",
-      "Microsoft.NETCore.UniversalWindowsPlatform": "[5.0.0, )"
+      "Microsoft.ApplicationInsights": "1.0.0",
+      "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
+      "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
+      "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
     },
     "frameworks": {
       "uap10.0.10240": {}
