@@ -190,12 +190,41 @@ namespace HoloToolkit.Unity.Buttons
                 //------------------------- CASES FOR MANAGING THE WORLD ANCHORS --------------------------------
 
                 case "load anchor":
-                    WorldAnchorManager.Instance.LoadAnchor("PersistentCubeAnchor", ObjToManip);
+                    if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+                    {
+                        processActive = true;
+                        WorldAnchorManager.Instance.LoadAnchor("PersistentCubeAnchor", ObjToManip);
+                        StartCoroutine(Waiting());
+                    }
                     break;
 
                 case "save anchor":
-                    WorldAnchorManager.Instance.AttachAnchor(ObjToManip, "PersistentCubeAnchor");
-                    WorldAnchorManager.Instance.AnchorDebugText.text = "Saved PersistentCubeAnchor";
+                    if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+                    {
+                        processActive = true;
+                        WorldAnchorManager.Instance.AttachAnchor(ObjToManip, "PersistentCubeAnchor");
+                        WorldAnchorManager.Instance.AnchorDebugText.text = "Saved PersistentCubeAnchor";
+                        StartCoroutine(Waiting());
+                    }
+                    break;
+
+                case "remove anchor":
+                    if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+                    {
+                        processActive = true;
+                        WorldAnchorManager.Instance.RemoveAnchor(ObjToManip);
+                        StartCoroutine(Waiting());
+                    }
+                    break;
+
+                case "reset anchor":
+                    if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+                    {
+                        processActive = true;
+                        WorldAnchorManager.Instance.RemoveAllAnchors();
+                        ObjToManip.transform.position = new Vector3(1.0f, 0.0f, 0.0f);
+                        StartCoroutine(Waiting());
+                    }
                     break;
 
 
