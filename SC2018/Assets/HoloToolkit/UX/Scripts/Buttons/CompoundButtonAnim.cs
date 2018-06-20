@@ -187,6 +187,17 @@ namespace HoloToolkit.Unity.Buttons
                     Scale_UI(2.0f - ui_scale_factor, newState);
                     break;
 
+                //------------------------- CASES FOR MANAGING THE WORLD ANCHORS --------------------------------
+
+                case "load anchor":
+                    WorldAnchorManager.Instance.LoadAnchor("PersistentCubeAnchor", ObjToManip);
+                    break;
+
+                case "save anchor":
+                    WorldAnchorManager.Instance.AttachAnchor(ObjToManip, "PersistentCubeAnchor");
+                    WorldAnchorManager.Instance.AnchorDebugText.text = "Saved PersistentCubeAnchor";
+                    break;
+
 
                 //------------------------- CASES FOR MOVEMENT --------------------------------------
                 case "mov pos z":                                   //moves ObjToManip depending on case (direction)
