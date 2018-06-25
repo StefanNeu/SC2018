@@ -22,7 +22,7 @@ namespace HoloToolkit.Unity.Buttons
 
         
         float move_factor = 0.001f;                     //0.001m = 1mm
-        float rotate_factor = 3.0f;                    //3 degrees
+        float rotate_factor = 1.0f;                    //1 degree
         float ui_scale_factor = 1.1f;                 //10%
 
         public string button;                        //used to differentiate which button is pressed
@@ -187,17 +187,19 @@ namespace HoloToolkit.Unity.Buttons
                     Scale_UI(2.0f - ui_scale_factor, newState);
                     break;
 
-                //------------------------- CASES FOR MANAGING THE WORLD ANCHORS --------------------------------
+                //------------------------- CASES FOR MANAGING THE WORLD ANCHORS (commented because tap-to-place.cs works fine) --------------------------------
 
-                case "load anchor":
+                case "how to align":
                     if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
                     {
                         processActive = true;
-                        WorldAnchorManager.Instance.LoadAnchor("PersistentCubeAnchor", ObjToManip);
+                        GameObject TutorialText = GameObject.Find("CoordinateSystemAligningTutorial");
+
+
                         StartCoroutine(Waiting());
                     }
                     break;
-
+                /*
                 case "save anchor":
                     if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
                     {
@@ -226,7 +228,7 @@ namespace HoloToolkit.Unity.Buttons
                         StartCoroutine(Waiting());
                     }
                     break;
-
+                    */
 
                 //------------------------- CASES FOR MOVEMENT --------------------------------------
                 case "mov pos z":                                   //moves ObjToManip depending on case (direction)
