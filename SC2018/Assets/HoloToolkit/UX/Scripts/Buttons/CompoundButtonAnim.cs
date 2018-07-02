@@ -19,10 +19,14 @@ namespace HoloToolkit.Unity.Buttons
         public GameObject ObjToManip;                   //object that gets moved
         public GameObject MoveHandle;                   //used to deactivate MoveUI and therefore activate RotateUI (otherwise both UIs overlap)
         public GameObject RotateHandle;
+        public TextMesh TutorialText;
+        public TextMesh TransformMode_Text;
 
+        int tutorialStep = 0;                           
+        int transform_mode = 0;
         
-        float move_factor = 0.001f;                     //0.001m = 1mm
-        float rotate_factor = 1.0f;                    //1 degree
+        float move_factor = 0.01f;                     //0.001m = 1mm
+        float rotate_factor = 5.0f;                    //1 degree
         float ui_scale_factor = 1.1f;                 //10%
 
         public string button;                        //used to differentiate which button is pressed
@@ -36,6 +40,28 @@ namespace HoloToolkit.Unity.Buttons
             processActive = false;
             
         }
+
+        IEnumerator FirstTutorialText()
+        {
+            TutorialText.text = "How To Align" + Environment.NewLine + "The Coordinate System";
+            yield return new WaitForSeconds(6.0f);
+            TutorialText.text = "This tutorial shows, how to set" + Environment.NewLine + "up the HoloLens Coordinate System.";
+            yield return new WaitForSeconds(6.0f);
+            TutorialText.text = "Please always press the tutorial" + Environment.NewLine + "buttton when you want to go" + Environment.NewLine + "over to the next step!";
+        }
+
+        IEnumerator SecondTutorialText()
+        {
+            TutorialText.text = "Please move the cube, so" + Environment.NewLine + "that the marked corner, alligns" + Environment.NewLine + "with the marked point in reality!";
+            yield return new WaitForSeconds(6.0f);
+            TutorialText.text = "";
+        }
+
+    /*    IEnumerator ThirdTutorialText()
+        {
+            TutorialText.text = "Now";
+        }
+    */
 
         [DropDownComponent]
         public Animator TargetAnimator;
@@ -59,7 +85,7 @@ namespace HoloToolkit.Unity.Buttons
             if (ObjToManip.transform.childCount >= 2)
                 ObjToManip.transform.GetChild(1).gameObject.SetActive(false);           //deactivate mesh of RotateCube when app starts
 
-            if (name == "Pos_UI_Scale" || name == "Neg_UI_Scale")                   //ugly hotfix since backplates of UI_Scale buttons disappeared at app_start
+            if (name == "Pos_UI_Scale" || name == "Neg_UI_Scale" || name == "TransformMode (rough or fine)")                   //ugly hotfix since backplates of UI_Scale buttons disappeared at app_start
                 if (transform.GetChild(0).gameObject.activeSelf == false)
                     transform.GetChild(0).gameObject.SetActive(true);
         }
@@ -88,6 +114,7 @@ namespace HoloToolkit.Unity.Buttons
             {
                 processActive = true;
                 ObjToManip.transform.Translate(x,y,z);
+                Debug.Log("Moved by factor: " + move_factor);
                 StartCoroutine(Waiting());
 
             }
@@ -97,9 +124,18 @@ namespace HoloToolkit.Unity.Buttons
         {
             if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
             {
-              
                 processActive = true;
-                ObjToManip.transform.Rotate(x, y, z);
+
+                if (true)
+                {
+                    GameObject rotatePoint = GameObject.Find("RotatingPoint");
+                    ObjToManip.transform.RotateAround(rotatePoint.transform.position, Vector3.up, (x+y+z));
+                    Debug.Log("Rotated by factor: " + rotate_factor);
+                } else
+                {
+                    ObjToManip.transform.Rotate(x, y, z);
+                }
+
                 StartCoroutine(Waiting());
 
             }
@@ -127,8 +163,10 @@ namespace HoloToolkit.Unity.Buttons
 
             GameObject RotaCubeMesh = ObjToManip.transform.GetChild(1).gameObject;
             GameObject AxisCubeMesh = ObjToManip.transform.GetChild(0).gameObject;
+            GameObject PointingArrow = ObjToManip.transform.GetChild(2).gameObject;
            
-   
+
+
 
             switch (button)
             {
@@ -187,48 +225,71 @@ namespace HoloToolkit.Unity.Buttons
                     Scale_UI(2.0f - ui_scale_factor, newState);
                     break;
 
-                //------------------------- CASES FOR MANAGING THE WORLD ANCHORS (commented because tap-to-place.cs works fine) --------------------------------
+                //-------------------- OTHER CASES --------------------------------
 
                 case "how to align":
                     if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
                     {
                         processActive = true;
-                        GameObject TutorialText = GameObject.Find("CoordinateSystemAligningTutorial");
 
+                        switch (tutorialStep)
+                        {
+                            case 0:
+                                
+                                StartCoroutine(FirstTutorialText());
+                                tutorialStep++;
+                                break;
+
+                            case 1:
+                                if (PointingArrow.activeSelf == false)
+                                    PointingArrow.SetActive(true);
+                                StartCoroutine(SecondTutorialText());
+                                tutorialStep++;
+                                break;
+
+                            case 2:
+                                if (PointingArrow.activeSelf == true)
+                                    PointingArrow.SetActive(false);
+                                //StartCoroutine(ThirdTutorialText());
+                                tutorialStep++;
+                                break;
+
+                        }
 
                         StartCoroutine(Waiting());
                     }
                     break;
-                /*
-                case "save anchor":
-                    if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
+
+                case "transform mode":
+                    if((processActive == false) && (newState == ButtonStateEnum.Pressed))
                     {
                         processActive = true;
-                        WorldAnchorManager.Instance.AttachAnchor(ObjToManip, "PersistentCubeAnchor");
-                        WorldAnchorManager.Instance.AnchorDebugText.text = "Saved PersistentCubeAnchor";
-                        StartCoroutine(Waiting());
-                    }
-                    break;
 
-                case "remove anchor":
-                    if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
-                    {
-                        processActive = true;
-                        WorldAnchorManager.Instance.RemoveAnchor(ObjToManip);
-                        StartCoroutine(Waiting());
-                    }
-                    break;
+                        if (transform_mode == 0)
+                        {
+                            TransformMode_Text.text = "Rough";
+                            move_factor = 0.01f;
+                            rotate_factor = 10.0f;
+                            Debug.Log("Changed the move_factor to: " + move_factor + "and the rotate_factor to" + rotate_factor);
+                            
+                            transform_mode = 1;
 
-                case "reset anchor":
-                    if ((processActive == false) && (newState == ButtonStateEnum.Pressed))
-                    {
-                        processActive = true;
-                        WorldAnchorManager.Instance.RemoveAllAnchors();
-                        ObjToManip.transform.position = new Vector3(1.0f, 0.0f, 0.0f);
+                        } else if(transform_mode == 1)
+                        {
+                            TransformMode_Text.text = "Fine";
+                            move_factor = 0.001f;
+                            rotate_factor = 1.0f;
+                            Debug.Log("Changed the move_factor to: " + move_factor + "and the rotate_factor to" + rotate_factor);
+
+                            transform_mode = 0;
+                        }
+
                         StartCoroutine(Waiting());
+
                     }
                     break;
-                    */
+             
+
 
                 //------------------------- CASES FOR MOVEMENT --------------------------------------
                 case "mov pos z":                                   //moves ObjToManip depending on case (direction)
@@ -290,7 +351,6 @@ namespace HoloToolkit.Unity.Buttons
                 case "rot neg z":
 
                     RotateObj(0, 0, -rotate_factor, newState);
-                    //SceneManager.LoadScene("0-TestScene");
                     break;
 
 
