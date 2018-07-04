@@ -309,6 +309,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: rot pos z
   TargetAnimator: {fileID: 57021069}
   AnimActions:
@@ -553,7 +554,7 @@ Transform:
   - {fileID: 1092687616}
   - {fileID: 1138187021}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &74546174
 GameObject:
@@ -1840,18 +1841,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 297385713}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.138, y: -0.129, z: 1}
+  m_LocalPosition: {x: -0.232, y: 0.105, z: 1.927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 841440899}
-  - {fileID: 1556046627}
-  - {fileID: 811633809}
-  - {fileID: 1180966550}
-  - {fileID: 1787103832}
-  - {fileID: 337137490}
-  - {fileID: 1771207386}
+  - {fileID: 1878231750}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &308491405
 GameObject:
@@ -2035,13 +2030,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 337137489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.291, y: -0.111, z: 0.25900006}
-  m_LocalScale: {x: 0.7729774, y: 0.52, z: 0.77297735}
+  m_LocalPosition: {x: -0.2902, y: -0.31540003, z: 0}
+  m_LocalScale: {x: 0.7729774, y: 1.04, z: 0.77297735}
   m_Children:
   - {fileID: 1535963165}
   - {fileID: 538690246}
   - {fileID: 1239938752}
-  m_Father: {fileID: 297385714}
+  m_Father: {fileID: 1878231750}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &337137491
@@ -2062,6 +2057,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 405817394}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: how to align
   TargetAnimator: {fileID: 337137492}
   AnimActions:
@@ -2588,7 +2584,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: af99cc3c7ff73e540adf53d6a3df876a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.142
+      value: 0.1229
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: af99cc3c7ff73e540adf53d6a3df876a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2653,7 +2649,7 @@ GameObject:
   - component: {fileID: 405817395}
   - component: {fileID: 405817394}
   m_Layer: 5
-  m_Name: CoordinateSystemAligningTutorial
+  m_Name: TutorialText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2666,8 +2662,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 405817392}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.196, z: 0.018}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.093, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1909373094}
@@ -2688,7 +2684,7 @@ TextMesh:
   m_Anchor: 7
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 80
+  m_FontSize: 16
   m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 86574c70442309b45be5a1c37a37a40b, type: 3}
@@ -2789,6 +2785,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: rot pos x
   TargetAnimator: {fileID: 414136062}
   AnimActions:
@@ -3012,6 +3009,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: rot neg x
   TargetAnimator: {fileID: 424197912}
   AnimActions:
@@ -3906,90 +3904,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a611e772ef8ddf64d8106a9cbb70f31c, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &580499961
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 580499965}
-  - component: {fileID: 580499964}
-  - component: {fileID: 580499962}
-  - component: {fileID: 580499963}
-  m_Layer: 0
-  m_Name: (Old Obj for testing) TransCube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!23 &580499962
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 580499961}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &580499963
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 580499961}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: -0.5, z: 0}
---- !u!33 &580499964
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 580499961}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &580499965
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 580499961}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.342, y: 0.41488904, z: -0.98624015}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_Children: []
-  m_Father: {fileID: 790439925}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639423395
 GameObject:
   m_ObjectHideFlags: 0
@@ -4157,8 +4071,9 @@ MonoBehaviour:
   ObjToManip: {fileID: 1909373093}
   MoveHandle: {fileID: 811633808}
   RotateHandle: {fileID: 1556046626}
-  TutorialText: {fileID: 0}
-  TransformMode_Text: {fileID: 0}
+  TutorialText: {fileID: 1376998777}
+  TransformMode_Text: {fileID: 1376998777}
+  t_step: 0
   button: mov pos x
   TargetAnimator: {fileID: 1073036237}
   AnimActions:
@@ -4453,6 +4368,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: rot neg z
   TargetAnimator: {fileID: 713787814}
   AnimActions:
@@ -4941,13 +4857,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 790439924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 1}
+  m_LocalPosition: {x: 0.371, y: -0.009, z: 1.924}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1909373094}
-  - {fileID: 580499965}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &801070012
 GameObject:
@@ -4960,6 +4875,7 @@ GameObject:
   - component: {fileID: 801070017}
   - component: {fileID: 801070016}
   - component: {fileID: 801070014}
+  - component: {fileID: 801070015}
   m_Layer: 0
   m_Name: WorldManager
   m_TagString: Untagged
@@ -4994,6 +4910,26 @@ MonoBehaviour:
   AnchorDebugText: {fileID: 0}
   ShowDetailedLogs: 0
   PersistentAnchors: 1
+--- !u!114 &801070015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 801070012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37870ab7a81bfb74b9fa277cf45b06d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SetStabilizationPlane: 1
+  UseUnscaledTime: 1
+  LerpStabilizationPlanePowerCloser: 4
+  LerpStabilizationPlanePowerFarther: 7
+  targetOverride: {fileID: 1909373094}
+  trackVelocity: 0
+  UseGazeManager: 1
+  DefaultPlaneDistance: 2
+  DrawGizmos: 1
 --- !u!114 &801070016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5057,14 +4993,14 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 811633808}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.16639994, y: 0.013399988, z: 0.25900006}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalPosition: {x: -0.16559994, y: -0.066600025, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1134067779}
   - {fileID: 1024866378}
   - {fileID: 314615471}
   - {fileID: 1931008401}
-  m_Father: {fileID: 297385714}
+  m_Father: {fileID: 1878231750}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &811633810
@@ -5105,6 +5041,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: move
   TargetAnimator: {fileID: 811633812}
   AnimActions:
@@ -5424,11 +5361,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonFamily: {fileID: 0}
-  ObjToManip: {fileID: 580499961}
+  ObjToManip: {fileID: 0}
   MoveHandle: {fileID: 811633808}
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: 
   TargetAnimator: {fileID: 841440895}
   AnimActions:
@@ -5545,13 +5483,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 841440893}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0008, y: 0.0467, z: 0.259}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 231902888}
   - {fileID: 1176359311}
   - {fileID: 203123401}
-  m_Father: {fileID: 297385714}
+  m_Father: {fileID: 1878231750}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &841440900
@@ -5591,7 +5529,43 @@ MonoBehaviour:
   ParentGameObjectToPlace: {fileID: 297385713}
   IsBeingPlaced: 0
   AllowMeshVisualizationControl: 1
-  UseColliderCenter: 0
+  UseColliderCenter: 1
+--- !u!1 &851640918 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: af99cc3c7ff73e540adf53d6a3df876a, type: 3}
+  m_PrefabInternal: {fileID: 405008215}
+--- !u!111 &851640922
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851640918}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0e33ef38f6ecdec4e83fb5e6c2a29a4e, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 0e33ef38f6ecdec4e83fb5e6c2a29a4e, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &851640923
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851640918}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96d3f03d42238154292f53559efe9127, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &853431209
 GameObject:
   m_ObjectHideFlags: 0
@@ -5651,6 +5625,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: rot pos y
   TargetAnimator: {fileID: 853431212}
   AnimActions:
@@ -5971,6 +5946,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: mov neg y
   TargetAnimator: {fileID: 1097226196}
   AnimActions:
@@ -6164,7 +6140,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 496839ee4791ca340acba3dbee6b10ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6215,9 +6191,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AppearInFrontOfUser: 1
-  DefaultGazeDistance: 2
+  DefaultGazeDistance: 1
   PlaceParentOnTap: 1
-  ParentGameObjectToPlace: {fileID: 0}
+  ParentGameObjectToPlace: {fileID: 790439924}
   IsBeingPlaced: 0
   AllowMeshVisualizationControl: 1
   UseColliderCenter: 0
@@ -6333,7 +6309,6 @@ GameObject:
   - component: {fileID: 1048524469}
   - component: {fileID: 1048524472}
   - component: {fileID: 1048524471}
-  - component: {fileID: 1048524473}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -6519,26 +6494,6 @@ MonoBehaviour:
   JoystickXYRotationAxisControl: {fileID: 1574457331}
   JoystickXYTranslationAxisControl: {fileID: 655188556}
   JoystickXZTranslationAxisControl: {fileID: 1205051939}
---- !u!114 &1048524473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1048524462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37870ab7a81bfb74b9fa277cf45b06d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SetStabilizationPlane: 1
-  UseUnscaledTime: 1
-  LerpStabilizationPlanePowerCloser: 4
-  LerpStabilizationPlanePowerFarther: 7
-  targetOverride: {fileID: 790439925}
-  trackVelocity: 0
-  UseGazeManager: 1
-  DefaultPlaneDistance: 2
-  DrawGizmos: 1
 --- !u!95 &1073036237
 Animator:
   serializedVersion: 3
@@ -7117,6 +7072,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: mov pos y
   TargetAnimator: {fileID: 767789175}
   AnimActions:
@@ -7756,13 +7712,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1180966549}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26660007, y: -0.08930001, z: 0.26020014}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalPosition: {x: 0.2674001, y: -0.27199998, z: 0.0011999607}
+  m_LocalScale: {x: 0.4, y: 0.8, z: 1}
   m_Children:
   - {fileID: 74546175}
   - {fileID: 1426337681}
   - {fileID: 1649563310}
-  m_Father: {fileID: 297385714}
+  m_Father: {fileID: 1878231750}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1180966551
@@ -7803,6 +7759,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1180966549}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: pos scale
   TargetAnimator: {fileID: 1180966553}
   AnimActions:
@@ -8402,6 +8359,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: mov pos z
   TargetAnimator: {fileID: 837351344}
   AnimActions:
@@ -8708,9 +8666,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AppearInFrontOfUser: 1
-  DefaultGazeDistance: 2
+  DefaultGazeDistance: 1
   PlaceParentOnTap: 1
-  ParentGameObjectToPlace: {fileID: 0}
+  ParentGameObjectToPlace: {fileID: 790439924}
   IsBeingPlaced: 0
   AllowMeshVisualizationControl: 1
   UseColliderCenter: 0
@@ -9071,6 +9029,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1376998776}
+  - component: {fileID: 1376998778}
+  - component: {fileID: 1376998777}
   m_Layer: 0
   m_Name: EmptyForUnusedPublicVars
   m_TagString: Untagged
@@ -9089,8 +9049,63 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!102 &1376998777
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1376998775}
+  m_Text: 
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+--- !u!23 &1376998778
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1376998775}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1394184366
 GameObject:
   m_ObjectHideFlags: 0
@@ -9935,14 +9950,14 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1556046626}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15960005, y: 0.013399988, z: 0.25900006}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0.16040002, y: -0.066600025, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1817321302}
   - {fileID: 5489707}
   - {fileID: 117110632}
   - {fileID: 1178314185}
-  m_Father: {fileID: 297385714}
+  m_Father: {fileID: 1878231750}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1556046628
@@ -9983,6 +9998,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: rotate
   TargetAnimator: {fileID: 1556046630}
   AnimActions:
@@ -10864,6 +10880,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: mov neg z
   TargetAnimator: {fileID: 1545444255}
   AnimActions:
@@ -11295,13 +11312,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1771207385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26660007, y: -0.23, z: 0.26020014}
-  m_LocalScale: {x: 0.58, y: 0.39999998, z: 1}
+  m_LocalPosition: {x: 0.2674001, y: -0.55340004, z: 0.0011999607}
+  m_LocalScale: {x: 0.58, y: 0.79999995, z: 1}
   m_Children:
   - {fileID: 2141388326}
   - {fileID: 359525900}
   - {fileID: 1611154397}
-  m_Father: {fileID: 297385714}
+  m_Father: {fileID: 1878231750}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1771207387
@@ -11342,6 +11359,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1771207385}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 1611154398}
+  t_step: 0
   button: transform mode
   TargetAnimator: {fileID: 1771207389}
   AnimActions:
@@ -11569,13 +11587,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1787103831}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26660007, y: -0.15730003, z: 0.26020014}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalPosition: {x: 0.2674001, y: -0.408, z: 0.0011999607}
+  m_LocalScale: {x: 0.4, y: 0.8, z: 1}
   m_Children:
   - {fileID: 1609685685}
   - {fileID: 117841140}
   - {fileID: 2033073717}
-  m_Father: {fileID: 297385714}
+  m_Father: {fileID: 1878231750}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1787103833
@@ -11616,6 +11634,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1787103831}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: neg scale
   TargetAnimator: {fileID: 1787103835}
   AnimActions:
@@ -11817,6 +11836,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: rot neg y
   TargetAnimator: {fileID: 1818739460}
   AnimActions:
@@ -12056,6 +12076,41 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1855945754}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1878231749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1878231750}
+  m_Layer: 5
+  m_Name: ButtonFamily2.Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1878231750
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1878231749}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_Children:
+  - {fileID: 841440899}
+  - {fileID: 1556046627}
+  - {fileID: 811633809}
+  - {fileID: 1180966550}
+  - {fileID: 1787103832}
+  - {fileID: 337137490}
+  - {fileID: 1771207386}
+  m_Father: {fileID: 297385714}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1909373093 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: c3b80dac6ce00e94192efbdcfb0d838d, type: 3}
@@ -12770,6 +12825,7 @@ MonoBehaviour:
   RotateHandle: {fileID: 1556046626}
   TutorialText: {fileID: 0}
   TransformMode_Text: {fileID: 0}
+  t_step: 0
   button: mov neg x
   TargetAnimator: {fileID: 1951977227}
   AnimActions:
