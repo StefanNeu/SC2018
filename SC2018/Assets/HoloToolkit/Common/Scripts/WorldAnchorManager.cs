@@ -230,6 +230,17 @@ namespace HoloToolkit.Unity
         }
 
         /// <summary>
+        /// Loads the anchor with the given id and attaches it to the GameObject.
+        /// </summary>
+        /// <param name="id">The string-id of the anchor you want to load.</param>
+        /// /// <param name="go">The GameObject you want to attach the anchor to.</param>
+        public void LoadAnchor(string id, GameObject go)
+        {
+            AnchorStore.Load(id, go);
+        }
+
+
+        /// <summary>
         /// Removes the anchor component from the GameObject and deletes the anchor from the anchor store.
         /// </summary>
         /// <param name="gameObjectToUnanchor">The GameObject reference with valid anchor to remove from the anchor store.</param>

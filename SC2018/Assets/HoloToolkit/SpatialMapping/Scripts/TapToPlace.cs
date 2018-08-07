@@ -19,7 +19,7 @@ namespace HoloToolkit.Unity.SpatialMapping
     public class TapToPlace : MonoBehaviour, IInputClickHandler
     {
 
-        public bool UI_Handle;                      //needed to change behaviour in TapToPlace.. the UI_Handle shouldnt be projected on the SpatialMesh but appear directly in front of the user
+        public bool AppearInFrontOfUser;                      //needed to change behaviour in TapToPlace.. the UI_Handle shouldnt be projected on the SpatialMesh but appear directly in front of the user
 
         [Tooltip("Distance from camera to keep the object while placing it.")]
         public float DefaultGazeDistance = 2.0f;
@@ -125,7 +125,7 @@ namespace HoloToolkit.Unity.SpatialMapping
                 placementPosition = ParentGameObjectToPlace.transform.position + (placementPosition - gameObject.transform.position);
             }
 
-            if(UI_Handle == true)
+            if(AppearInFrontOfUser == true)                           //makes 
             {
                 placementPosition = GetGazePlacementPosition(cameraTransform.position, cameraTransform.forward, DefaultGazeDistance);
             }
